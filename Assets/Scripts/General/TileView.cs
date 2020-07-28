@@ -32,7 +32,7 @@ public class TileView : MonoBehaviour
         if(entity != null)
         {
             GameEntity e = entity.entity as GameEntity;
-            Debug.LogFormat("ex = {0}, ey = {1}", e.arrayPosition.x, e.arrayPosition.y);
+            // Debug.LogFormat("ex = {0}, ey = {1}", e.arrayPosition.x, e.arrayPosition.y);
             e.ReplaceMoving(firstPosition, lastPosition);
         }
     }

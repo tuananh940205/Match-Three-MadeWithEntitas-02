@@ -30,7 +30,7 @@ public class RenderPositionSystem : ReactiveSystem<GameEntity>
         {
             // Debug.LogFormat("RenderPositionSystem, Execute");
             // Debug.LogFormat("" + offset);
-            Vector2 pos = new Vector2(startPosition.x + e.arrayPosition.x * offset.x, startPosition.y + e.arrayPosition.y * offset.y);
+            Vector2 pos = new Vector2(startPosition.x + e.arrayPosition.x * offset.x, startPosition.y - e.arrayPosition.y * offset.y);
             // e.view.gameObject.transform.position = new Vector2(startPosition.x + e.arrayPosition.x * offset.x, startPosition.y + e.arrayPosition.y) * offset.y;
             e.view.gameObject.transform.position = pos;
             // Debug.LogFormat("x = {0}, y = {1}", e.arrayPosition.x, e.arrayPosition.y);

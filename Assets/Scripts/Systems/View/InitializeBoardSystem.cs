@@ -41,7 +41,7 @@ public class InitializeBoardSystem : ReactiveSystem<GameEntity>
                     GameObject go = Resources.Load<GameObject>("Prefabs/" + names[Random.Range(0, names.Length - 1)]);
                     GameEntity _gameEntity = _gameContext.CreateEntity();
                     _gameEntity.AddView(go);
-                    _gameEntity.AddArrayPosition(x, -y);
+                    _gameEntity.AddArrayPosition(x, y);
                     
                 }
             }

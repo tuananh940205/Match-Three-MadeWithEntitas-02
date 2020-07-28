@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{3b36567e-d24e-2575-c8bf-3f68eb3b86bd}</ProjectGuid>
+    <ProjectGuid>{7E56363B-4ED2-7525-C8BF-3F68EB3B86BD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -45,9 +45,21 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleAudio.cs" />
+     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModulePhysics.cs" />
+     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModulePhysics2D.cs" />
+     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleSprite.cs" />
+     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUI.cs" />
+     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
+     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" />
      <Compile Include="Assets\DesperateDevs\Compile.cs" />
      <Compile Include="Assets\Generated\Contexts.cs" />
      <Compile Include="Assets\Generated\Feature.cs" />
+     <Compile Include="Assets\Generated\Game\Components\GameArrayPositionComponent.cs" />
+     <Compile Include="Assets\Generated\Game\Components\GameBoardColumnComponent.cs" />
+     <Compile Include="Assets\Generated\Game\Components\GameBoardRowComponent.cs" />
+     <Compile Include="Assets\Generated\Game\Components\GameMovingComponent.cs" />
+     <Compile Include="Assets\Generated\Game\Components\GameViewComponent.cs" />
      <Compile Include="Assets\Generated\Game\GameAttribute.cs" />
      <Compile Include="Assets\Generated\Game\GameComponentsLookup.cs" />
      <Compile Include="Assets\Generated\Game\GameContext.cs" />
@@ -60,8 +72,50 @@
      <Compile Include="Assets\Generated\Input\InputMatcher.cs" />
      <Compile Include="Assets\Scripts\Components\Components.cs" />
      <Compile Include="Assets\Scripts\General\GameController.cs" />
+     <Compile Include="Assets\Scripts\General\TileView.cs" />
+     <Compile Include="Assets\Scripts\Systems\Input\InputSystems.cs" />
+     <Compile Include="Assets\Scripts\Systems\View\AddViewSystem.cs" />
+     <Compile Include="Assets\Scripts\Systems\View\BoardSizeSystem.cs" />
+     <Compile Include="Assets\Scripts\Systems\View\InitializeBoardSystem.cs" />
+     <Compile Include="Assets\Scripts\Systems\View\RenderPositionSystem.cs" />
+     <Compile Include="Assets\Scripts\Systems\View\TileMovingSystem.cs" />
+     <Compile Include="Assets\Scripts\Systems\View\ViewSystems.cs" />
      <None Include="Assets\Entitas\LICENSE.txt" />
      <None Include="Assets\Entitas\Entitas.xml" />
+     <None Include="Assets\Demigiant\DOTween\readme.txt" />
+ <Reference Include="Unity.Timeline.Editor">
+ <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.TextMeshPro.Editor">
+ <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UI">
+ <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Timeline">
+ <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.CollabProxy.Editor">
+ <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Rider.Editor">
+ <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.2D.Sprite.Editor">
+ <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.2D.Tilemap.Editor">
+ <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.TextMeshPro">
+ <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.UI">
+ <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.VSCode.Editor">
+ <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine">
  <HintPath>/Applications/Unity/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
@@ -268,6 +322,9 @@
  </Reference>
  <Reference Include="Entitas.CodeGeneration.Attributes">
  <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Assets/Entitas/Entitas.CodeGeneration.Attributes.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween">
+ <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Assets/Demigiant/DOTween/DOTween.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Applications/Unity/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -620,52 +677,6 @@
  <Reference Include="mscorlib">
  <HintPath>/Applications/Unity/Unity.app/Contents/NetStandard/compat/2.0.0/shims/netfx/mscorlib.dll</HintPath>
  </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="Unity.Timeline.Editor.csproj">
-      <Project>{1d5d7c01-6e4e-a29c-b693-f2fae064ffa6}</Project>
-      <Name>Unity.Timeline.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VSCode.Editor.csproj">
-      <Project>{779207cd-1b0a-ab8e-b8d1-fc49ccc3c20b}</Project>
-      <Name>Unity.VSCode.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.TextMeshPro.Editor.csproj">
-      <Project>{76a0e833-c774-8c58-1c2d-2ea1857e2eff}</Project>
-      <Name>Unity.TextMeshPro.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{881ed5a9-5916-29df-267a-a1f466a84e69}</Project>
-      <Name>UnityEngine.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Timeline.csproj">
-      <Project>{44c147db-6afb-d8a0-89d6-4e45ad6e7b08}</Project>
-      <Name>Unity.Timeline</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.CollabProxy.Editor.csproj">
-      <Project>{5ca98c86-79dd-2cf4-4bc3-88b8feed7807}</Project>
-      <Name>Unity.CollabProxy.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Rider.Editor.csproj">
-      <Project>{898db935-9e4f-3fe5-2a9a-4b1280f58c4c}</Project>
-      <Name>Unity.Rider.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Sprite.Editor.csproj">
-      <Project>{1407d43a-63b8-8460-f6be-90d24f38dd0d}</Project>
-      <Name>Unity.2D.Sprite.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Tilemap.Editor.csproj">
-      <Project>{c63f8e4f-7ee0-461b-281e-7b4faf4b231a}</Project>
-      <Name>Unity.2D.Tilemap.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.TextMeshPro.csproj">
-      <Project>{a784d0cb-bdd4-e045-ef10-52fe86ee24ee}</Project>
-      <Name>Unity.TextMeshPro</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{3c787dc6-af98-383e-1557-4c19988fa8eb}</Project>
-      <Name>UnityEditor.UI</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         Contexts contexts = Contexts.sharedInstance;
+        _systems = CreateSystems(contexts);
         _systems.Initialize();
     }
 
@@ -15,5 +16,12 @@ public class GameController : MonoBehaviour
     {
         _systems.Execute();
         _systems.Cleanup();
+    }
+
+    Systems CreateSystems(Contexts contexts)
+    {
+        return new Feature("Total Systems")
+            .Add(new InputSystems(contexts))
+            .Add(new ViewSystems(contexts));
     }
 }

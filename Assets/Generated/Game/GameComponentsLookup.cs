@@ -8,15 +8,27 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
+    public const int ArrayPosition = 0;
+    public const int BoardColumn = 1;
+    public const int BoardRow = 2;
+    public const int Moving = 3;
+    public const int View = 4;
 
-
-    public const int TotalComponents = 0;
+    public const int TotalComponents = 5;
 
     public static readonly string[] componentNames = {
-
+        "ArrayPosition",
+        "BoardColumn",
+        "BoardRow",
+        "Moving",
+        "View"
     };
 
     public static readonly System.Type[] componentTypes = {
-
+        typeof(ArrayPositionComponent),
+        typeof(BoardColumnComponent),
+        typeof(BoardRowComponent),
+        typeof(MovingComponent),
+        typeof(ViewComponent)
     };
 }

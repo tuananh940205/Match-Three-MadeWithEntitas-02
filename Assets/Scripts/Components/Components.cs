@@ -1,18 +1,34 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Entitas;
 using UnityEngine;
 
-public class Components : MonoBehaviour
+[Game]
+public class ViewComponent : IComponent
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject gameObject;
+}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+[Game]
+public class ArrayPositionComponent : IComponent
+{
+    public int x;
+    public int y;
+}
+
+[Game]
+public class BoardRowComponent : IComponent
+{
+    public int value;
+}
+
+[Game]
+public class BoardColumnComponent : IComponent
+{
+    public int value;
+}
+
+[Game]
+public class MovingComponent : IComponent
+{
+    public Vector2 startPos;
+    public Vector2 endPos;
 }

@@ -58,7 +58,9 @@
      <Compile Include="Assets\Generated\Game\Components\GameArrayPositionComponent.cs" />
      <Compile Include="Assets\Generated\Game\Components\GameBoardColumnComponent.cs" />
      <Compile Include="Assets\Generated\Game\Components\GameBoardRowComponent.cs" />
+     <Compile Include="Assets\Generated\Game\Components\GameMoveComponent.cs" />
      <Compile Include="Assets\Generated\Game\Components\GameMovingComponent.cs" />
+     <Compile Include="Assets\Generated\Game\Components\GamePositionComponent.cs" />
      <Compile Include="Assets\Generated\Game\Components\GameViewComponent.cs" />
      <Compile Include="Assets\Generated\Game\GameAttribute.cs" />
      <Compile Include="Assets\Generated\Game\GameComponentsLookup.cs" />
@@ -76,15 +78,22 @@
      <Compile Include="Assets\Scripts\Systems\Input\InputSystems.cs" />
      <Compile Include="Assets\Scripts\Systems\View\AddViewSystem.cs" />
      <Compile Include="Assets\Scripts\Systems\View\BoardSizeSystem.cs" />
+     <Compile Include="Assets\Scripts\Systems\View\FindAdjacentSystem.cs" />
      <Compile Include="Assets\Scripts\Systems\View\InitializeBoardSystem.cs" />
+     <Compile Include="Assets\Scripts\Systems\View\MoveBackSystem.cs" />
+     <Compile Include="Assets\Scripts\Systems\View\MoveSystem.cs" />
+     <Compile Include="Assets\Scripts\Systems\View\RenderArrayPositionSystem.cs" />
      <Compile Include="Assets\Scripts\Systems\View\RenderPositionSystem.cs" />
-     <Compile Include="Assets\Scripts\Systems\View\TileMovingSystem.cs" />
+     <Compile Include="Assets\Scripts\Systems\View\ResetArrayPositionSystem.cs" />
      <Compile Include="Assets\Scripts\Systems\View\ViewSystems.cs" />
      <None Include="Assets\Entitas\LICENSE.txt" />
      <None Include="Assets\Entitas\Entitas.xml" />
      <None Include="Assets\Demigiant\DOTween\readme.txt" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.VSCode.Editor">
+ <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
@@ -112,9 +121,6 @@
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
- </Reference>
- <Reference Include="Unity.VSCode.Editor">
- <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine">
  <HintPath>/Applications/Unity/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
@@ -299,32 +305,32 @@
  <Reference Include="UnityEditor">
  <HintPath>/Applications/Unity/Unity.app/Contents/Managed/UnityEditor.dll</HintPath>
  </Reference>
- <Reference Include="DesperateDevs.Logging">
- <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Assets/DesperateDevs/DesperateDevs.Logging.dll</HintPath>
- </Reference>
- <Reference Include="DesperateDevs.Utils">
- <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Assets/DesperateDevs/DesperateDevs.Utils.dll</HintPath>
- </Reference>
- <Reference Include="Entitas">
- <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Assets/Entitas/Entitas.dll</HintPath>
- </Reference>
- <Reference Include="Entitas.VisualDebugging.Unity">
- <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Assets/Entitas/Entitas.VisualDebugging.Unity.dll</HintPath>
- </Reference>
- <Reference Include="DesperateDevs.Networking">
- <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Assets/DesperateDevs/DesperateDevs.Networking.dll</HintPath>
+ <Reference Include="Entitas.CodeGeneration.Attributes">
+ <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Assets/Entitas/Entitas.CodeGeneration.Attributes.dll</HintPath>
  </Reference>
  <Reference Include="Entitas.Unity">
  <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Assets/Entitas/Entitas.Unity.dll</HintPath>
  </Reference>
- <Reference Include="DesperateDevs.Serialization">
- <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Assets/DesperateDevs/DesperateDevs.Serialization.dll</HintPath>
+ <Reference Include="Entitas.VisualDebugging.Unity">
+ <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Assets/Entitas/Entitas.VisualDebugging.Unity.dll</HintPath>
  </Reference>
- <Reference Include="Entitas.CodeGeneration.Attributes">
- <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Assets/Entitas/Entitas.CodeGeneration.Attributes.dll</HintPath>
+ <Reference Include="Entitas">
+ <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Assets/Entitas/Entitas.dll</HintPath>
  </Reference>
  <Reference Include="DOTween">
  <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Assets/Demigiant/DOTween/DOTween.dll</HintPath>
+ </Reference>
+ <Reference Include="DesperateDevs.Utils">
+ <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Assets/DesperateDevs/DesperateDevs.Utils.dll</HintPath>
+ </Reference>
+ <Reference Include="DesperateDevs.Logging">
+ <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Assets/DesperateDevs/DesperateDevs.Logging.dll</HintPath>
+ </Reference>
+ <Reference Include="DesperateDevs.Serialization">
+ <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Assets/DesperateDevs/DesperateDevs.Serialization.dll</HintPath>
+ </Reference>
+ <Reference Include="DesperateDevs.Networking">
+ <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Assets/DesperateDevs/DesperateDevs.Networking.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Applications/Unity/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

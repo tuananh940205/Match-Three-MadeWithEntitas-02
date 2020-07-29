@@ -34,15 +34,21 @@ public class InitializeBoardSystem : ReactiveSystem<GameEntity>
     {
         foreach(GameEntity e in entities)
         {
+            string[,] gameObjectNames = new string[e.boardRow.value, e.boardColumn.value];
             for(int y = 0; y < e.boardColumn.value; y++)
             {
                 for(int x = 0; x < e.boardRow.value; x++)
                 {
-                    GameObject go = Resources.Load<GameObject>("Prefabs/" + names[Random.Range(0, names.Length - 1)]);
+                    List<string> nameList = new List<string>();
                     GameEntity _gameEntity = _gameContext.CreateEntity();
+                    nameList.AddRange(names);
+                    if (x > 0) nameList.Remove(gameObjectNames[x - 1, y]);
+                    if(y > 0) nameList.Remove(gameObjectNames[x, y - 1]);
+                    string name = nameList[Random.Range(0, nameList.Count - 1)];
+                    gameObjectNames[x, y] = name;
+                    GameObject go = Resources.Load<GameObject>("Prefabs/" + name);
                     _gameEntity.AddView(go);
                     _gameEntity.AddArrayPosition(x, y);
-                    
                 }
             }
         }

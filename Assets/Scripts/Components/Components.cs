@@ -32,3 +32,16 @@ public class MovingComponent : IComponent
     public Vector2 startPos;
     public Vector2 endPos;
 }
+
+[Game]
+public class MoveComponent : IComponent
+{
+    public int x;
+    public int y;
+}
+
+[Game]
+public class PositionComponent : IComponent
+{
+    public Vector2 value;
+}

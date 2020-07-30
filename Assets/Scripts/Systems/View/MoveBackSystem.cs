@@ -14,12 +14,12 @@ public class MoveBackSystem : ReactiveSystem<GameEntity>
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
     {
-        return context.CreateCollector(GameMatcher.AnyOf(GameMatcher.Move, GameMatcher.Moving));
+        return context.CreateCollector(GameMatcher.AllOf(GameMatcher.Move, GameMatcher.Moving));
     }
 
     protected override bool Filter(GameEntity entity)
     {
-        return entity.hasMove || entity.hasMoving;
+        return entity.hasMove && entity.hasMoving;
     }
 
     protected override void Execute(List<GameEntity> entities)

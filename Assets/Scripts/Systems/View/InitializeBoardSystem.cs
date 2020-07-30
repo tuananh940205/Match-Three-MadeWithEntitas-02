@@ -48,6 +48,7 @@ public class InitializeBoardSystem : ReactiveSystem<GameEntity>
                     gameObjectNames[x, y] = name;
                     GameObject go = Resources.Load<GameObject>("Prefabs/" + name);
                     _gameEntity.AddView(go);
+                    _gameEntity.AddTileName(name);
                     _gameEntity.AddArrayPosition(x, y);
                 }
             }

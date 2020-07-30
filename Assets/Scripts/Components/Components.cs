@@ -45,3 +45,25 @@ public class PositionComponent : IComponent
 {
     public Vector2 value;
 }
+
+[Game]
+public class FindingMatchComponent : IComponent
+{
+}
+
+[Game]
+public class TileNameComponent : IComponent
+{
+    public string name;
+}
+
+[Game]
+public class FadedComponent : IComponent
+{
+}
+
+[Game]
+public class TileViewComponent : IComponent
+{
+    public SpriteRenderer spriteRenderer;
+}

@@ -22,6 +22,7 @@ public class MoveSystem : IExecuteSystem
     {
         foreach(GameEntity e in _moves.GetEntities())
         {
+            // Debug.LogFormat("MoveSystem: {0}", _moves.GetEntities().Length);
             Vector2 target = new Vector2(startPosition.x + e.move.x * offset.x, startPosition.y - e.move.y * offset.y);
             // Debug.LogFormat("MoveSystem, Execute");
             // Debug.LogFormat(e.view.gameObject.name + "");
@@ -35,26 +36,26 @@ public class MoveSystem : IExecuteSystem
             if(dist <= _speed * Time.deltaTime)
             {
                 // Debug.LogFormat("MoveComplete");
-                e.view.gameObject.transform.position = target;
+                // e.view.gameObject.transform.position = target;
+                e.ReplacePosition(target);
                 e.arrayPosition.x = e.move.x;
                 e.arrayPosition.y = e.move.y;
-                
                 // if(true)
                 // {
                 //     Debug.LogFormat("Swap back!");
-                    
                 //     return;
                 // }
-
                 e.RemoveMove();
+                e.isFindingMatch = true;
                 foreach(GameEntity en in _moving.GetEntities())
                 {
                     en.RemoveMoving();
+                //     en.isFindingMatch = true;
                 }
-                
-                return;
+                // return;
             }
-            e.ReplacePosition(newPos);
+            else 
+                e.ReplacePosition(newPos);
         }
     }
 }

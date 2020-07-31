@@ -26,7 +26,7 @@ public class MoveBackSystem : ReactiveSystem<GameEntity>
     {
         foreach(GameEntity e in entities)
         {
-            Debug.LogFormat("MoveBackSystem, Execute");
+            // Debug.LogFormat("MoveBackSystem, Execute");
         }
     }
 }

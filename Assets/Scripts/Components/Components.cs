@@ -1,4 +1,5 @@
 ﻿using Entitas;
+using Entitas.CodeGeneration.Attributes;
 using UnityEngine;
 
 [Game]
@@ -14,13 +15,13 @@ public class ArrayPositionComponent : IComponent
     public int y;
 }
 
-[Game]
+[Game, Unique]
 public class BoardRowComponent : IComponent
 {
     public int value;
 }
 
-[Game]
+[Game, Unique]
 public class BoardColumnComponent : IComponent
 {
     public int value;
@@ -63,7 +64,8 @@ public class FadedComponent : IComponent
 }
 
 [Game]
-public class TileViewComponent : IComponent
+public class FillPositionComponent : IComponent
 {
-    public SpriteRenderer spriteRenderer;
+    public int x;
+    public int y;
 }

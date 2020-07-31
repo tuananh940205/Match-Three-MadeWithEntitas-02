@@ -2,8 +2,6 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
-    <CscToolPath>/Applications/Unity/Unity.app/Contents/Tools/RoslynScripts</CscToolPath>
-    <CscToolExe>unity_csc.sh</CscToolExe>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -47,14 +45,6 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="UnityEngine">
-      <HintPath>/Applications/Unity/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor">
-      <HintPath>/Applications/Unity/Unity.app/Contents/Managed/UnityEditor.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
      <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleAudio.cs" />
      <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModulePhysics.cs" />
      <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModulePhysics2D.cs" />
@@ -69,6 +59,7 @@
      <Compile Include="Assets\Generated\Game\Components\GameBoardColumnComponent.cs" />
      <Compile Include="Assets\Generated\Game\Components\GameBoardRowComponent.cs" />
      <Compile Include="Assets\Generated\Game\Components\GameFadedComponent.cs" />
+     <Compile Include="Assets\Generated\Game\Components\GameFillPositionComponent.cs" />
      <Compile Include="Assets\Generated\Game\Components\GameFindingMatchComponent.cs" />
      <Compile Include="Assets\Generated\Game\Components\GameMoveComponent.cs" />
      <Compile Include="Assets\Generated\Game\Components\GameMovingComponent.cs" />
@@ -93,6 +84,7 @@
      <Compile Include="Assets\Scripts\Systems\View\AddViewSystem.cs" />
      <Compile Include="Assets\Scripts\Systems\View\BoardSizeSystem.cs" />
      <Compile Include="Assets\Scripts\Systems\View\CleanupSystem.cs" />
+     <Compile Include="Assets\Scripts\Systems\View\FillBoardSystem.cs" />
      <Compile Include="Assets\Scripts\Systems\View\FindAdjacentSystem.cs" />
      <Compile Include="Assets\Scripts\Systems\View\FindMatchSystem.cs" />
      <Compile Include="Assets\Scripts\Systems\View\InitializeBoardSystem.cs" />
@@ -100,7 +92,6 @@
      <Compile Include="Assets\Scripts\Systems\View\MoveSystem.cs" />
      <Compile Include="Assets\Scripts\Systems\View\RenderArrayPositionSystem.cs" />
      <Compile Include="Assets\Scripts\Systems\View\RenderPositionSystem.cs" />
-     <Compile Include="Assets\Scripts\Systems\View\ResetArrayPositionSystem.cs" />
      <Compile Include="Assets\Scripts\Systems\View\TileFadedSystem.cs" />
      <Compile Include="Assets\Scripts\Systems\View\ViewSystems.cs" />
      <None Include="Assets\Entitas\LICENSE.txt" />
@@ -138,6 +129,9 @@
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine">
+ <HintPath>/Applications/Unity/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>/Applications/Unity/Unity.app/Contents/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -315,6 +309,9 @@
  </Reference>
  <Reference Include="UnityEngine.XRModule">
  <HintPath>/Applications/Unity/Unity.app/Contents/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor">
+ <HintPath>/Applications/Unity/Unity.app/Contents/Managed/UnityEditor.dll</HintPath>
  </Reference>
  <Reference Include="Entitas.CodeGeneration.Attributes">
  <HintPath>/Users/sgs/Unity Projects/RepositoryProjects/Match-Three-MadeWithEntitas-02/Assets/Entitas/Entitas.CodeGeneration.Attributes.dll</HintPath>
@@ -696,7 +693,7 @@
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

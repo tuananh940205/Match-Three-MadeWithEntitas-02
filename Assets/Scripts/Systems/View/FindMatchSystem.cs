@@ -97,7 +97,7 @@ public class FindMatchSystem : ReactiveSystem<GameEntity>
                                 temp1.Add(tempArray[x, i]);
                             }
                         }
-                        Debug.LogFormat("temp1 vertical = {0}, e = {1}", temp1.Count, e.tileName.name);
+                        // Debug.LogFormat("temp1 vertical = {0}, e = {1}", temp1.Count, e.tileName.name);
                         if(temp1.Count >= 2) matchEntityList.AddRange(temp1);
                         isFound = true;
                         break;
@@ -112,7 +112,7 @@ public class FindMatchSystem : ReactiveSystem<GameEntity>
                     _matchEntity.isFaded = true;
                 }
             }
-            Debug.LogFormat("matchEntityList = {0}, e = {1}", matchEntityList.Count, e.tileName.name);
+            // Debug.LogFormat("matchEntityList = {0}, e = {1}", matchEntityList.Count, e.tileName.name);
         }
     }
 }

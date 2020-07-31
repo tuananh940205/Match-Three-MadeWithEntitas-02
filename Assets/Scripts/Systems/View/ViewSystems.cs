@@ -15,10 +15,10 @@
         Add(new FindAdjacentSystem(contexts));
         Add(new RenderPositionSystem(contexts));
         Add(new MoveBackSystem(contexts));
-        // Add(new ResetArrayPositionSystem(contexts));
         Add(new FindMatchSystem(contexts));
         Add(new AddNameSystem(contexts));
         Add(new TileFadedSystem(contexts));
+        Add(new FillBoardSystem(contexts));
 
         // Cleanup
         Add(new CleanupSystem(contexts));

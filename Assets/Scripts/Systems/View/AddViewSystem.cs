@@ -29,7 +29,6 @@ public class AddViewSystem : ReactiveSystem<GameEntity>
         foreach(GameEntity e in entities)
         {
             e.view.gameObject = Object.Instantiate(e.view.gameObject);
-            
             e.view.gameObject.transform.SetParent(_viewContainer, true);
             e.view.gameObject.Link(e);
         }

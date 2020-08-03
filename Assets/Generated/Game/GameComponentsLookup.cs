@@ -9,26 +9,30 @@
 public static class GameComponentsLookup {
 
     public const int ArrayPosition = 0;
-    public const int BoardColumn = 1;
-    public const int BoardRow = 2;
+    public const int BoardSize = 1;
+    public const int ClearBoard = 2;
     public const int Faded = 3;
     public const int FillPosition = 4;
     public const int FindingMatch = 5;
-    public const int Move = 6;
-    public const int Moving = 7;
-    public const int Position = 8;
-    public const int TileName = 9;
-    public const int View = 10;
+    public const int FirstPosition = 6;
+    public const int LastPosition = 7;
+    public const int Move = 8;
+    public const int Moving = 9;
+    public const int Position = 10;
+    public const int TileName = 11;
+    public const int View = 12;
 
-    public const int TotalComponents = 11;
+    public const int TotalComponents = 13;
 
     public static readonly string[] componentNames = {
         "ArrayPosition",
-        "BoardColumn",
-        "BoardRow",
+        "BoardSize",
+        "ClearBoard",
         "Faded",
         "FillPosition",
         "FindingMatch",
+        "FirstPosition",
+        "LastPosition",
         "Move",
         "Moving",
         "Position",
@@ -38,11 +42,13 @@ public static class GameComponentsLookup {
 
     public static readonly System.Type[] componentTypes = {
         typeof(ArrayPositionComponent),
-        typeof(BoardColumnComponent),
-        typeof(BoardRowComponent),
+        typeof(BoardSizeComponent),
+        typeof(ClearBoardComponent),
         typeof(FadedComponent),
         typeof(FillPositionComponent),
         typeof(FindingMatchComponent),
+        typeof(FirstPositionComponent),
+        typeof(LastPositionComponent),
         typeof(MoveComponent),
         typeof(MovingComponent),
         typeof(PositionComponent),

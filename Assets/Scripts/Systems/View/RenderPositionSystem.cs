@@ -27,6 +27,10 @@ public class RenderPositionSystem : ReactiveSystem<GameEntity>
     {
         foreach(GameEntity e in entities)
         {
+            if(e.position.value.y <= 1.45f && e.view.gameObject.GetComponent<SpriteRenderer>().color == new Color(0, 0, 0, 0))
+            {
+                e.view.gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+            }
             e.view.gameObject.transform.position = e.position.value;
         }
     }

@@ -29,9 +29,8 @@ public class RenderArrayPositionSystem : ReactiveSystem<GameEntity>
         foreach(GameEntity e in entities)
         {
             // Debug.LogFormat("RenderPositionSystem, Execute");
-            // Debug.LogFormat("" + offset);
             Vector2 pos = new Vector2(startPosition.x + e.arrayPosition.x * offset.x, startPosition.y - e.arrayPosition.y * offset.y);
-            e.AddPosition(pos);
+            e.ReplacePosition(pos);
         }
     }
 }

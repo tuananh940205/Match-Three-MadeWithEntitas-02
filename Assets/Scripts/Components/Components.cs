@@ -2,6 +2,13 @@
 using Entitas.CodeGeneration.Attributes;
 using UnityEngine;
 
+[Game, Unique]
+public class BoardSizeComponent : IComponent
+{
+    public int row;
+    public int column;
+}
+
 [Game]
 public class ViewComponent : IComponent
 {
@@ -13,18 +20,6 @@ public class ArrayPositionComponent : IComponent
 {
     public int x;
     public int y;
-}
-
-[Game, Unique]
-public class BoardRowComponent : IComponent
-{
-    public int value;
-}
-
-[Game, Unique]
-public class BoardColumnComponent : IComponent
-{
-    public int value;
 }
 
 [Game]
@@ -48,9 +43,7 @@ public class PositionComponent : IComponent
 }
 
 [Game]
-public class FindingMatchComponent : IComponent
-{
-}
+public class FindingMatchComponent : IComponent { }
 
 [Game]
 public class TileNameComponent : IComponent
@@ -59,9 +52,7 @@ public class TileNameComponent : IComponent
 }
 
 [Game]
-public class FadedComponent : IComponent
-{
-}
+public class FadedComponent : IComponent { }
 
 [Game]
 public class FillPositionComponent : IComponent
@@ -69,3 +60,20 @@ public class FillPositionComponent : IComponent
     public int x;
     public int y;
 }
+
+[Game]
+public class FirstPositionComponent : IComponent
+{
+    public float x;
+    public float y;
+}
+
+[Game]
+public class LastPositionComponent : IComponent
+{
+    public float x;
+    public float y;
+}
+
+[Game]
+public class ClearBoardComponent : IComponent { }

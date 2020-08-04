@@ -11,24 +11,24 @@ public class ClearMatchSystem : ReactiveSystem<GameEntity>
     IGroup<GameEntity> _groupTileEntities;
     string[] names = new string[] { "Blue", "Blue2", "Green", "Purple", "Red", "Yellow" };
 
-    public ClearMatchSystem (Contexts contexts) : base (contexts.game)
+    public ClearMatchSystem(Contexts contexts) : base (contexts.game)
     {
         _gameContext = contexts.game;
         _fadeTile = _gameContext.GetGroup(GameMatcher.Faded);
         _groupTileEntities = _gameContext.GetGroup(GameMatcher.View);
     }
 
-    protected override ICollector<GameEntity> GetTrigger (IContext<GameEntity> context)
+    protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
     {
-        return context.CreateCollector (GameMatcher.ClearBoard);
+        return context.CreateCollector(GameMatcher.ClearBoard);
     }
 
-    protected override bool Filter (GameEntity entity)
+    protected override bool Filter(GameEntity entity)
     {
         return entity.isClearBoard;
     }
 
-    protected override void Execute (List<GameEntity> entities)
+    protected override void Execute(List<GameEntity> entities)
     {
         foreach (GameEntity e in entities)
         {

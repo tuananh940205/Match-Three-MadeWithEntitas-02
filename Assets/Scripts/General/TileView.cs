@@ -14,7 +14,7 @@ public class TileView : MonoBehaviour
         Vector3[] wayPath = new Vector3[]
         {
             transform.position,
-            new Vector3 (transform.position.x, transform.position.y + 0.1f, transform.position.z),
+            new Vector3(transform.position.x, transform.position.y + 0.1f, transform.position.z),
             transform.position
         };
 

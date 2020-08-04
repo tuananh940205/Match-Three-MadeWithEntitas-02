@@ -18,23 +18,23 @@ public class FillBoardSystem : ReactiveSystem<GameEntity>
         "Yellow",
     };
 
-    public FillBoardSystem (Contexts contexts) : base (contexts.game)
+    public FillBoardSystem(Contexts contexts) : base(contexts.game)
     {
         _gameContext = contexts.game;
-        _tileEntityGroup = _gameContext.GetGroup (GameMatcher.View);
+        _tileEntityGroup = _gameContext.GetGroup(GameMatcher.View);
     }
 
-    protected override ICollector<GameEntity> GetTrigger (IContext<GameEntity> context)
+    protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
     {
-        return context.CreateCollector (GameMatcher.FillPosition);
+        return context.CreateCollector(GameMatcher.FillPosition);
     }
 
-    protected override bool Filter (GameEntity entity)
+    protected override bool Filter(GameEntity entity)
     {
         return entity.hasFillPosition;
     }
 
-    protected override void Execute (List<GameEntity> entities)
+    protected override void Execute(List<GameEntity> entities)
     {
         foreach (GameEntity e in entities)
         {

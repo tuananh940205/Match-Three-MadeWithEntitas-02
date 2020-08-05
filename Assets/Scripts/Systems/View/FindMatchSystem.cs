@@ -103,17 +103,17 @@ public class FindMatchSystem : ReactiveSystem<GameEntity>
             // Debug.LogFormat ("matchEntityCount = {0}", matchEntityList.Count);
             if(matchEntityList.Count >= 2)
             {
-                Debug.LogFormat("Matched");
-                e.isMatch = true;
+                Debug.LogFormat("Matched Event Execution Here");
+                // e.isMatch = true;
                 matchEntityList.Add(e);
-                // foreach(GameEntity _matchEntity in matchEntityList)
-                // {
-                //     _matchEntity.isFaded = true;
-                // }
-                // if(!_boardEntity.isClearBoard)
-                // {
-                //     _boardEntity.isClearBoard = true;
-                // }
+                foreach(GameEntity _matchEntity in matchEntityList)
+                {
+                    _matchEntity.isFaded = true;
+                }
+                if(!_boardEntity.isClearBoard)
+                {
+                    _boardEntity.isClearBoard = true;
+                }
             }
             else
             {
@@ -123,7 +123,7 @@ public class FindMatchSystem : ReactiveSystem<GameEntity>
                 List<GameEntity> unmatchList = new List<GameEntity>();
                 if(entitiesWithFindingMatch.Length == 2)
                 {
-                    Debug.LogFormat("Unmatched");
+                    // Debug.LogFormat("Unmatched");
                 }
                 foreach(GameEntity en in entitiesWithFindingMatch)
                 {
@@ -132,10 +132,18 @@ public class FindMatchSystem : ReactiveSystem<GameEntity>
                         unmatchList.Add(en);
                     }
                 }
-                Debug.LogFormat("List count {0}", unmatchList.Count);
+                // Debug.LogFormat("List count {0}", unmatchList.Count);
                 if(unmatchList.Count == 2)
                 {
-                    _boardEntity.isTileReverse = true;
+                    // _boardEntity.isTileReverse = true;
+                    // Debug.LogFormat("Swap backkk");
+                    int x1 = unmatchList[1].arrayPosition.x;
+                    int y1 = unmatchList[1].arrayPosition.y;
+                    int x2 = unmatchList[0].arrayPosition.x;
+                    int y2 = unmatchList[0].arrayPosition.y;
+                    unmatchList[0].ReplaceMoveBackWithoutMatch(x1, y1);
+                    unmatchList[1].ReplaceMoveBackWithoutMatch(x2, y2);
+
                 }
                 // Debug.LogFormat("entitiesWithFindingMatch count = {0}", entitiesWithFindingMatch.Length);
                 // List<GameEntity> isMatchListEntities = new List<GameEntity>();

@@ -67,6 +67,7 @@
      <Compile Include="Assets\Generated\Game\Components\GameMoveBackWithoutMatchComponent.cs" />
      <Compile Include="Assets\Generated\Game\Components\GameMoveByUserInputComponent.cs" />
      <Compile Include="Assets\Generated\Game\Components\GamePositionComponent.cs" />
+     <Compile Include="Assets\Generated\Game\Components\GameTileColumnFillComponent.cs" />
      <Compile Include="Assets\Generated\Game\Components\GameTileNameComponent.cs" />
      <Compile Include="Assets\Generated\Game\Components\GameTileReverseComponent.cs" />
      <Compile Include="Assets\Generated\Game\Components\GameViewComponent.cs" />
@@ -90,10 +91,10 @@
      <Compile Include="Assets\Scripts\Systems\View\CleanupSystem.cs" />
      <Compile Include="Assets\Scripts\Systems\View\ClearMatchSystem.cs" />
      <Compile Include="Assets\Scripts\Systems\View\FillBoardSystem.cs" />
+     <Compile Include="Assets\Scripts\Systems\View\FillBoardSystem1.cs" />
      <Compile Include="Assets\Scripts\Systems\View\FindAdjacentSystem.cs" />
      <Compile Include="Assets\Scripts\Systems\View\FindMatchSystem.cs" />
      <Compile Include="Assets\Scripts\Systems\View\InitializeBoardSystem.cs" />
-     <Compile Include="Assets\Scripts\Systems\View\MoveBackSystem.cs" />
      <Compile Include="Assets\Scripts\Systems\View\MoveByUserInputSystem.cs" />
      <Compile Include="Assets\Scripts\Systems\View\RenderArrayPositionSystem.cs" />
      <Compile Include="Assets\Scripts\Systems\View\RenderPositionSystem.cs" />

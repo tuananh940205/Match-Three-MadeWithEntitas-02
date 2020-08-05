@@ -83,3 +83,9 @@ public class MatchComponent : IComponent { }
 
 [Game]
 public class TileReverse : IComponent { }
+
+[Game]
+public class TileColumnFillComponent : IComponent
+{
+    public int[] tileNumber;
+}

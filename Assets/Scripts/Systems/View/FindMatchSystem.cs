@@ -6,12 +6,13 @@ public class FindMatchSystem : ReactiveSystem<GameEntity>
 {
     readonly GameContext _gameContext;
     GameEntity _boardEntity;
-    IGroup<GameEntity> _failEntityGroup;
+    IGroup<GameEntity> _findingMatchGroup;
+    // IGroup<GameEntity> _isFindingMatch;
 
     public FindMatchSystem(Contexts contexts) : base(contexts.game)
     {
         _gameContext = contexts.game;
-        _failEntityGroup = _gameContext.GetGroup(GameMatcher.FindingMatch);
+        _findingMatchGroup = _gameContext.GetGroup(GameMatcher.FindingMatch);
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -31,7 +32,7 @@ public class FindMatchSystem : ReactiveSystem<GameEntity>
             // Debug.LogFormat ("e = {0}, x = {1}, y = {2}", e.view.gameObject.name, e.arrayPosition.x, e.arrayPosition.y);
             List<GameEntity> matchEntityList = new List<GameEntity>();
             List<GameEntity> temp1 = new List<GameEntity>();
-            GameEntity[]tileEntities = _gameContext.GetGroup(GameMatcher.View).GetEntities();
+            GameEntity[] tileEntities = _gameContext.GetGroup(GameMatcher.View).GetEntities();
             _boardEntity = _gameContext.boardSizeEntity;
             bool isFound = false;
             // Debug.LogFormat("row = {0}, column = {1}", _boardEntity.boardSize.row, _boardEntity.boardSize.column);
@@ -72,7 +73,7 @@ public class FindMatchSystem : ReactiveSystem<GameEntity>
                         ///
                         // Debug.LogFormat("temp1 horizontal = {0}, e = {1}", temp1.Count, e.tileName.name);
                         if(temp1.Count >= 2) matchEntityList.AddRange(temp1);
-                        temp1.Clear ();
+                        temp1.Clear();
                         ///
                         //vertical - up
                         if(y > 0)
@@ -100,37 +101,69 @@ public class FindMatchSystem : ReactiveSystem<GameEntity>
                 }
             }
             // Debug.LogFormat ("matchEntityCount = {0}", matchEntityList.Count);
-            if (matchEntityList.Count >= 2)
+            if(matchEntityList.Count >= 2)
             {
                 Debug.LogFormat("Matched");
-                matchEntityList.Add (e);
-                foreach(GameEntity _matchEntity in matchEntityList)
-                {
-                    _matchEntity.isFaded = true;
-                }
-                if(!_boardEntity.isClearBoard)
-                {
-                    _boardEntity.isClearBoard = true;
-                }
-                
+                e.isMatch = true;
+                matchEntityList.Add(e);
+                // foreach(GameEntity _matchEntity in matchEntityList)
+                // {
+                //     _matchEntity.isFaded = true;
+                // }
+                // if(!_boardEntity.isClearBoard)
+                // {
+                //     _boardEntity.isClearBoard = true;
+                // }
             }
             else
             {
                 // Debug.LogFormat("Unmatched");
-                if(!_boardEntity.isClearBoard)
+                GameEntity[] entitiesWithFindingMatch = _findingMatchGroup.GetEntities();
+                List<GameEntity> unmatchList = new List<GameEntity>();
+                if(entitiesWithFindingMatch.Length == 2)
                 {
-                    GameEntity[] failedTileEntities = _failEntityGroup.GetEntities();
-                    if(failedTileEntities.Length == 2)
+                    Debug.LogFormat("Unmatched");
+                }
+                foreach(GameEntity en in entitiesWithFindingMatch)
+                {
+                    if(!en.isMatch)
                     {
-                        int x1 = failedTileEntities[0].arrayPosition.x;
-                        int y1 = failedTileEntities[0].arrayPosition.y;
-                        int x2 = failedTileEntities[1].arrayPosition.x;
-                        int y2 = failedTileEntities[1].arrayPosition.y;
-                        failedTileEntities[0].ReplaceMove(x2, y2);
-                        failedTileEntities[1].ReplaceMove(x1, y1);
-                        
+                        unmatchList.Add(en);
                     }
                 }
+                Debug.LogFormat("List count {0}", unmatchList.Count);
+                if(unmatchList.Count == 2)
+                {
+                    _boardEntity.isTileReverse = true;
+                }
+                // Debug.LogFormat("entitiesWithFindingMatch count = {0}", entitiesWithFindingMatch.Length);
+                // List<GameEntity> isMatchListEntities = new List<GameEntity>();
+                // foreach(GameEntity entity in entitiesWithFindingMatch)
+                // {
+                //     if(!entity.isMatch)
+                //     {
+                //         isMatchListEntities.Add(entity);
+                //     }
+                // }
+                // Debug.LogFormat("Count = {0}", isMatchListEntities.Count);
+                // if(isMatchListEntities.Count == 2)
+                // {
+                //     Debug.LogFormat("Failed");
+                // }
+                // if(!_boardEntity.isClearBoard)
+                // {
+                //     GameEntity[] failedTileEntities = _failEntityGroup.GetEntities();
+                //     if(failedTileEntities.Length == 2)
+                //     {
+                //         int x1 = failedTileEntities[0].arrayPosition.x;
+                //         int y1 = failedTileEntities[0].arrayPosition.y;
+                //         int x2 = failedTileEntities[1].arrayPosition.x;
+                //         int y2 = failedTileEntities[1].arrayPosition.y;
+                //         failedTileEntities[0].ReplaceMove(x2, y2);
+                //         failedTileEntities[1].ReplaceMove(x1, y1);
+                        
+                //     }
+                // }
             }
             // Debug.LogFormat("matchEntityList = {0}, e = {1}", matchEntityList.Count, e.tileName.name);
         }

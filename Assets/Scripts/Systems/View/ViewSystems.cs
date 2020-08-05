@@ -16,6 +16,7 @@
         Add(new RenderArrayPositionSystem(contexts));
         Add(new FindAdjacentSystem(contexts));
         Add(new FindMatchSystem(contexts));
+        Add(new ReverseTileSystem(contexts));
         Add(new ClearMatchSystem(contexts));
         Add(new FillBoardSystem(contexts));
 

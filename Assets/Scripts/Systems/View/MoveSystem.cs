@@ -32,14 +32,15 @@ public class MoveSystem : IExecuteSystem
             Vector2 newPos = goPos + dir.normalized * _speed * Time.deltaTime;
             // Debug.LogFormat("dis = {0}", 1 * _speed * Time.deltaTime);
             float dist = dir.magnitude;
+            
             if(dist <= _speed * Time.deltaTime)
             {
                 // Debug.LogFormat("MoveComplete");
                 e.ReplacePosition(target);
                 e.arrayPosition.x = e.move.x;
                 e.arrayPosition.y = e.move.y;
-                e.RemoveMove();
                 e.isFindingMatch = true;
+                e.RemoveMove();
             }
             else
             {

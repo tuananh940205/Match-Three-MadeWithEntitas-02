@@ -16,13 +16,15 @@ public static class GameComponentsLookup {
     public const int FindingMatch = 5;
     public const int FirstPosition = 6;
     public const int LastPosition = 7;
-    public const int Move = 8;
-    public const int Moving = 9;
-    public const int Position = 10;
-    public const int TileName = 11;
-    public const int View = 12;
+    public const int Match = 8;
+    public const int Move = 9;
+    public const int Moving = 10;
+    public const int Position = 11;
+    public const int TileName = 12;
+    public const int TileReverse = 13;
+    public const int View = 14;
 
-    public const int TotalComponents = 13;
+    public const int TotalComponents = 15;
 
     public static readonly string[] componentNames = {
         "ArrayPosition",
@@ -33,10 +35,12 @@ public static class GameComponentsLookup {
         "FindingMatch",
         "FirstPosition",
         "LastPosition",
+        "Match",
         "Move",
         "Moving",
         "Position",
         "TileName",
+        "TileReverse",
         "View"
     };
 
@@ -49,10 +53,12 @@ public static class GameComponentsLookup {
         typeof(FindingMatchComponent),
         typeof(FirstPositionComponent),
         typeof(LastPositionComponent),
+        typeof(MatchComponent),
         typeof(MoveComponent),
         typeof(MovingComponent),
         typeof(PositionComponent),
         typeof(TileNameComponent),
+        typeof(TileReverse),
         typeof(ViewComponent)
     };
 }

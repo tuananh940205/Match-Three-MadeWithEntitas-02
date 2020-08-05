@@ -7,10 +7,12 @@ public class FindAdjacentSystem : ReactiveSystem<GameEntity>
 {
     readonly GameContext _gameContext;
     GameEntity _boardEntity;
+    IGroup<GameEntity> secondEntities;
 
     public FindAdjacentSystem(Contexts contexts) : base(contexts.game)
     {
         _gameContext = contexts.game;
+        secondEntities = _gameContext.GetGroup(GameMatcher.View);
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -71,8 +73,9 @@ public class FindAdjacentSystem : ReactiveSystem<GameEntity>
                 // Debug.LogFormat("x = {0}, y = {1}", secondX, secondY);
                 if(secondX != -1 && secondY != -1)
                 {
-                    IGroup<GameEntity> secondEntities = _gameContext.GetGroup(GameMatcher.View);
-                    foreach (GameEntity _gameEntity in secondEntities.GetEntities())
+                    // IGroup<GameEntity> secondEntities = _gameContext.GetGroup(GameMatcher.View);
+                    GameEntity[] _tileEntities = secondEntities.GetEntities();
+                    foreach (GameEntity _gameEntity in _tileEntities)
                     {
                         if(_gameEntity.arrayPosition.x == secondX && _gameEntity.arrayPosition.y == secondY)
                         {

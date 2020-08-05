@@ -99,7 +99,6 @@ public class ClearMatchSystem : ReactiveSystem<GameEntity>
                     }
                 });
             }
-            
         }
     }
 }

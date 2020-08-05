@@ -77,3 +77,9 @@ public class LastPositionComponent : IComponent
 
 [Game]
 public class ClearBoardComponent : IComponent { }
+
+[Game]
+public class MatchComponent : IComponent { }
+
+[Game]
+public class TileReverse : IComponent { }

@@ -17,8 +17,8 @@ public static class GameComponentsLookup {
     public const int FirstPosition = 6;
     public const int LastPosition = 7;
     public const int Match = 8;
-    public const int Move = 9;
-    public const int Moving = 10;
+    public const int MoveBackWithoutMatch = 9;
+    public const int MoveByUserInput = 10;
     public const int Position = 11;
     public const int TileName = 12;
     public const int TileReverse = 13;
@@ -36,8 +36,8 @@ public static class GameComponentsLookup {
         "FirstPosition",
         "LastPosition",
         "Match",
-        "Move",
-        "Moving",
+        "MoveBackWithoutMatch",
+        "MoveByUserInput",
         "Position",
         "TileName",
         "TileReverse",
@@ -54,8 +54,8 @@ public static class GameComponentsLookup {
         typeof(FirstPositionComponent),
         typeof(LastPositionComponent),
         typeof(MatchComponent),
-        typeof(MoveComponent),
-        typeof(MovingComponent),
+        typeof(MoveBackWithoutMatchComponent),
+        typeof(MoveByUserInputComponent),
         typeof(PositionComponent),
         typeof(TileNameComponent),
         typeof(TileReverse),

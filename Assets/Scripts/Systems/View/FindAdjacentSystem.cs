@@ -84,8 +84,8 @@ public class FindAdjacentSystem : ReactiveSystem<GameEntity>
                             {
                                 // Debug.LogFormat("Ent 1 = {0}, ent2 = {1}", e.view.gameObject.name, e2.view.gameObject.name);
                                 // Debug.LogFormat ("Found the second");
-                                e.ReplaceMove(e2.arrayPosition.x, e2.arrayPosition.y);
-                                e2.ReplaceMove(e.arrayPosition.x, e.arrayPosition.y);
+                                e.ReplaceMoveByUserInput(e2.arrayPosition.x, e2.arrayPosition.y);
+                                e2.ReplaceMoveByUserInput(e.arrayPosition.x, e.arrayPosition.y);
                                 // Debug.LogFormat("Not null");
                                 break;
                             }

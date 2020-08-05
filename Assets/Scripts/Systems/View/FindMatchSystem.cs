@@ -117,6 +117,7 @@ public class FindMatchSystem : ReactiveSystem<GameEntity>
             }
             else
             {
+                // IF MATCH FAILURE
                 // Debug.LogFormat("Unmatched");
                 GameEntity[] entitiesWithFindingMatch = _findingMatchGroup.GetEntities();
                 List<GameEntity> unmatchList = new List<GameEntity>();
@@ -166,6 +167,7 @@ public class FindMatchSystem : ReactiveSystem<GameEntity>
                 // }
             }
             // Debug.LogFormat("matchEntityList = {0}, e = {1}", matchEntityList.Count, e.tileName.name);
+            e.isFindingMatch = false;
         }
     }
 }

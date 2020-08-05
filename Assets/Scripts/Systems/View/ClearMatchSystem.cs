@@ -87,7 +87,7 @@ public class ClearMatchSystem : ReactiveSystem<GameEntity>
                                 //pull tiles here
                                 foreach(GameEntity _tileEntity in _pullDownTiles)
                                 {
-                                    _tileEntity.ReplaceMove(_tileEntity.arrayPosition.x, _tileEntity.arrayPosition.y + additionalArr[i]);
+                                    // _tileEntity.ReplaceMove(_tileEntity.arrayPosition.x, _tileEntity.arrayPosition.y + additionalArr[i]);
                                 }
                                 e.isClearBoard = false;
                             }

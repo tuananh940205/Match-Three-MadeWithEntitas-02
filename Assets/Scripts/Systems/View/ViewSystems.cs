@@ -6,7 +6,8 @@
         Add(new BoardSizeSystem(contexts));
 
         // Execute
-        Add(new MoveSystem(contexts));
+        Add(new MoveByUserInputSystem(contexts));
+        Add(new ReverseTileSystem(contexts));
 
         // ReactiveSystem
         Add(new InitializeBoardSystem(contexts));
@@ -16,7 +17,6 @@
         Add(new RenderArrayPositionSystem(contexts));
         Add(new FindAdjacentSystem(contexts));
         Add(new FindMatchSystem(contexts));
-        Add(new ReverseTileSystem(contexts));
         Add(new ClearMatchSystem(contexts));
         Add(new FillBoardSystem(contexts));
 

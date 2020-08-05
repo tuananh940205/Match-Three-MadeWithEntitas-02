@@ -23,14 +23,14 @@ public class ArrayPositionComponent : IComponent
 }
 
 [Game]
-public class MovingComponent : IComponent
+public class MoveByUserInputComponent : IComponent
 {
-    public Vector2 startPos;
-    public Vector2 endPos;
+    public int x;
+    public int y;
 }
 
 [Game]
-public class MoveComponent : IComponent
+public class MoveBackWithoutMatchComponent : IComponent
 {
     public int x;
     public int y;

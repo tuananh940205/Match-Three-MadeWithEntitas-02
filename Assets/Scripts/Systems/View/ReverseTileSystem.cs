@@ -24,9 +24,9 @@ public class ReverseTileSystem : ReactiveSystem<GameEntity>
 
     protected override void Execute(List<GameEntity> entities)
     {
-        foreach(GameMatcher e in entities)
+        foreach(GameEntity e in entities)
         {
-            
+
         }
     }
 }

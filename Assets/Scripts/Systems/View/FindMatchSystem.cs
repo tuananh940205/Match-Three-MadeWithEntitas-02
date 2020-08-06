@@ -145,34 +145,6 @@ public class FindMatchSystem : ReactiveSystem<GameEntity>
                     unmatchList[1].ReplaceMoveBackWithoutMatch(x2, y2);
 
                 }
-                // Debug.LogFormat("entitiesWithFindingMatch count = {0}", entitiesWithFindingMatch.Length);
-                // List<GameEntity> isMatchListEntities = new List<GameEntity>();
-                // foreach(GameEntity entity in entitiesWithFindingMatch)
-                // {
-                //     if(!entity.isMatch)
-                //     {
-                //         isMatchListEntities.Add(entity);
-                //     }
-                // }
-                // Debug.LogFormat("Count = {0}", isMatchListEntities.Count);
-                // if(isMatchListEntities.Count == 2)
-                // {
-                //     Debug.LogFormat("Failed");
-                // }
-                // if(!_boardEntity.isClearBoard)
-                // {
-                //     GameEntity[] failedTileEntities = _failEntityGroup.GetEntities();
-                //     if(failedTileEntities.Length == 2)
-                //     {
-                //         int x1 = failedTileEntities[0].arrayPosition.x;
-                //         int y1 = failedTileEntities[0].arrayPosition.y;
-                //         int x2 = failedTileEntities[1].arrayPosition.x;
-                //         int y2 = failedTileEntities[1].arrayPosition.y;
-                //         failedTileEntities[0].ReplaceMove(x2, y2);
-                //         failedTileEntities[1].ReplaceMove(x1, y1);
-                        
-                //     }
-                // }
             }
             // Debug.LogFormat("matchEntityList = {0}, e = {1}", matchEntityList.Count, e.tileName.name);
             e.isFindingMatch = false;

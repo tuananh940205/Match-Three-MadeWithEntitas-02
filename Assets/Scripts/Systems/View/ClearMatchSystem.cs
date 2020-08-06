@@ -59,9 +59,10 @@ public class ClearMatchSystem : ReactiveSystem<GameEntity>
                     en.Destroy();
                     if(count == 1)
                     {
-                        Debug.LogFormat("Fill the board Execution here");
+                        // Debug.LogFormat("Fill the board Execution here");
                         _boardEntity = _gameContext.boardSizeEntity;
                         _boardEntity.ReplaceTileColumnFill(additionalArr);
+                        _boardEntity.isClearBoard = false;
                     }
                     else
                     {

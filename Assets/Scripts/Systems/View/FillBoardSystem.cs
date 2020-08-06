@@ -8,15 +8,7 @@ public class FillBoardSystem : ReactiveSystem<GameEntity>
 {
     readonly GameContext _gameContext;
     readonly IGroup<GameEntity> _tileEntityGroup;
-    string[] names = new string[]
-    {
-        "Blue",
-        "Blue2",
-        "Green",
-        "Purple",
-        "Red",
-        "Yellow",
-    };
+    string[] names = new string[] { "Blue", "Blue2", "Green", "Purple", "Red", "Yellow" };
 
     public FillBoardSystem(Contexts contexts) : base(contexts.game)
     {
@@ -26,39 +18,57 @@ public class FillBoardSystem : ReactiveSystem<GameEntity>
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
     {
-        return context.CreateCollector(GameMatcher.FillPosition);
+        return context.CreateCollector(GameMatcher.AllOf(GameMatcher.BoardSize, GameMatcher.TileColumnFill));
     }
 
     protected override bool Filter(GameEntity entity)
     {
-        return entity.hasFillPosition;
+        return entity.hasTileColumnFill;
     }
 
     protected override void Execute(List<GameEntity> entities)
     {
         foreach (GameEntity e in entities)
         {
-            Debug.LogFormat("FillBoardSystem, Execute x = {0}, y = {1}", e.fillPosition.x, e.fillPosition.y);
-            // Debug.LogFormat("FillBoardSystem entities = {3}, Execute {0}, x = {1}, y = {2}", entities.Count, e.fillPosition.x, e.fillPosition.y, entities.Count);
-            // GameEntity[] _tileEntities = _tileEntityGroup.GetEntities();
-            // int a = 0;
-            // for(int i = 0; i < _tileEntities.Length; i++)
+            for(int i = 0; i < e.tileColumnFill.tileNumber.Length; i++)
+            {
+                if(e.tileColumnFill.tileNumber[i] > 0)
+                {
+                    for(int j = 0; j < e.tileColumnFill.tileNumber[i]; j++)
+                    {
+                        GameEntity _newTile = _gameContext.CreateEntity();
+                        string name = names[Random.Range(0, names.Length - 1)];
+                        GameObject go = Resources.Load<GameObject>("Prefabs/" + name);
+                        _newTile.AddView(go);
+                        _newTile.AddTileName(name);
+                        _newTile.AddArrayPosition(i, -j - 1);
+                        _newTile.view.gameObject.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
+                    }
+                }
+            }
+            // GameEntity[] _tileEntities = _gameContext.GetGroup(GameMatcher.View).GetEntities();
+            // Debug.LogFormat("Gameentity length = {0}", _tileEntities.Length);
+            // GameEntity[,] tileArray = new GameEntity[e.boardSize.row, e.boardSize.column];
+            // foreach(GameEntity entity in _tileEntities)
             // {
-            //     if(_tileEntities[i].arrayPosition.y == e.fillPosition.y)
+            //     if(entity.arrayPosition.x >= 0 && entity.arrayPosition.y >= 0)
             //     {
-            //         if(a >= _tileEntities[i].arrayPosition.x)
+            //         tileArray[entity.arrayPosition.x, entity.arrayPosition.y] = entity;
+            //     }
+            // }
+            // for(int y = 0; y < tileArray.GetLength(1); y++)
+            // {
+            //     for(int x = 0; x < tileArray.GetLength(0); x++)
+            //     {
+            //         if(tileArray[x, y] == null)
             //         {
-            //             a = _tileEntities[i].arrayPosition.x - 1;
+            //             Debug.LogFormat("Null {0} - {1}", x, y);
             //         }
             //     }
             // }
-            // Debug.LogFormat("a = {0}", a);
-            // GameEntity _newTile = _gameContext.CreateEntity();
-            // GameObject go = Resources.Load<GameObject>("Prefabs/" + names[Random.Range(0, names.Length - 1)]);
-            // _newTile.AddView(go);
-            // _newTile.AddTileName(go.name);
-            // _newTile.AddArrayPosition(e.fillPosition.x , a);
-            // Debug.LogFormat("gameObject {0} {1}", _newTile.view.gameObject.transform.position.x, _newTile.view.gameObject.transform.position.y);
+            e.ReplaceTileColumnPull(e.tileColumnFill.tileNumber);
+            e.RemoveTileColumnFill();
+            
         }
     }
 }

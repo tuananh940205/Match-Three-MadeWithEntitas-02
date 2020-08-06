@@ -8,6 +8,7 @@
         // Execute
         Add(new MoveByUserInputSystem(contexts));
         Add(new ReverseTileSystem(contexts));
+        Add(new TileFallSystem(contexts));
 
         // ReactiveSystem
         Add(new InitializeBoardSystem(contexts));
@@ -19,6 +20,7 @@
         Add(new FindMatchSystem(contexts));
         Add(new ClearMatchSystem(contexts));
         Add(new FillBoardSystem(contexts));
+        Add(new PullBoardSystem(contexts));
 
         // Cleanup
         Add(new CleanupSystem(contexts));

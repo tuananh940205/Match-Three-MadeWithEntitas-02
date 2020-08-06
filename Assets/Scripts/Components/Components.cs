@@ -89,3 +89,9 @@ public class TileColumnFillComponent : IComponent
 {
     public int[] tileNumber;
 }
+
+[Game]
+public class TileColumnPullComponent : IComponent
+{
+    public int[] tileNumber;
+}

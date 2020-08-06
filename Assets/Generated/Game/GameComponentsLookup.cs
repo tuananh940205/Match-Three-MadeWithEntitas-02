@@ -21,11 +21,12 @@ public static class GameComponentsLookup {
     public const int MoveByUserInput = 10;
     public const int Position = 11;
     public const int TileColumnFill = 12;
-    public const int TileName = 13;
-    public const int TileReverse = 14;
-    public const int View = 15;
+    public const int TileColumnPull = 13;
+    public const int TileName = 14;
+    public const int TileReverse = 15;
+    public const int View = 16;
 
-    public const int TotalComponents = 16;
+    public const int TotalComponents = 17;
 
     public static readonly string[] componentNames = {
         "ArrayPosition",
@@ -41,6 +42,7 @@ public static class GameComponentsLookup {
         "MoveByUserInput",
         "Position",
         "TileColumnFill",
+        "TileColumnPull",
         "TileName",
         "TileReverse",
         "View"
@@ -60,6 +62,7 @@ public static class GameComponentsLookup {
         typeof(MoveByUserInputComponent),
         typeof(PositionComponent),
         typeof(TileColumnFillComponent),
+        typeof(TileColumnPullComponent),
         typeof(TileNameComponent),
         typeof(TileReverse),
         typeof(ViewComponent)

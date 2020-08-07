@@ -6,25 +6,21 @@ using UnityEngine;
 public class CleanupSystem : ICleanupSystem
 {
     readonly GameContext _gameContext;
-    // readonly IGroup<GameEntity> _isFindingMatch;
-    // readonly IGroup<GameEntity> _isFillingBoard;
+    IGroup<GameEntity> _isFillingBoard;
 
     public CleanupSystem(Contexts contexts)
     {
         _gameContext = contexts.game;
-        // _isFindingMatch = _gameContext.GetGroup(GameMatcher.FindingMatch);
-        // _isFillingBoard = _gameContext.GetGroup(GameMatcher.FillPosition);
+        _isFillingBoard = _gameContext.GetGroup(GameMatcher.TileColumnFill);
     }
 
     public void Cleanup()
     {
-        // foreach (GameEntity e in _isFindingMatch.GetEntities ())
-        // {
-        //     e.isFindingMatch = false;
-        // }
-        // foreach(GameEntity e in _isFillingBoard.GetEntities())
-        // {
-        //     e.Destroy();
-        // }
+        foreach(GameEntity e in _isFillingBoard.GetEntities())
+        {
+            // int[] temp = e.tileColumnFill.tileNumber;
+            // e.RemoveTileColumnFill();
+            // e.ReplaceTileColumnPull(temp);
+        }
     }
 }

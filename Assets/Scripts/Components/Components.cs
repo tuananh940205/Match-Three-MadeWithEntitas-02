@@ -95,3 +95,10 @@ public class TileColumnPullComponent : IComponent
 {
     public int[] tileNumber;
 }
+
+[Game]
+public class FallDownComponent : IComponent
+{
+    public int x;
+    public int y;
+}

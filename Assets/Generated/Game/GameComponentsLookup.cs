@@ -12,27 +12,29 @@ public static class GameComponentsLookup {
     public const int BoardSize = 1;
     public const int ClearBoard = 2;
     public const int Faded = 3;
-    public const int FillPosition = 4;
-    public const int FindingMatch = 5;
-    public const int FirstPosition = 6;
-    public const int LastPosition = 7;
-    public const int Match = 8;
-    public const int MoveBackWithoutMatch = 9;
-    public const int MoveByUserInput = 10;
-    public const int Position = 11;
-    public const int TileColumnFill = 12;
-    public const int TileColumnPull = 13;
-    public const int TileName = 14;
-    public const int TileReverse = 15;
-    public const int View = 16;
+    public const int FallDown = 4;
+    public const int FillPosition = 5;
+    public const int FindingMatch = 6;
+    public const int FirstPosition = 7;
+    public const int LastPosition = 8;
+    public const int Match = 9;
+    public const int MoveBackWithoutMatch = 10;
+    public const int MoveByUserInput = 11;
+    public const int Position = 12;
+    public const int TileColumnFill = 13;
+    public const int TileColumnPull = 14;
+    public const int TileName = 15;
+    public const int TileReverse = 16;
+    public const int View = 17;
 
-    public const int TotalComponents = 17;
+    public const int TotalComponents = 18;
 
     public static readonly string[] componentNames = {
         "ArrayPosition",
         "BoardSize",
         "ClearBoard",
         "Faded",
+        "FallDown",
         "FillPosition",
         "FindingMatch",
         "FirstPosition",
@@ -53,6 +55,7 @@ public static class GameComponentsLookup {
         typeof(BoardSizeComponent),
         typeof(ClearBoardComponent),
         typeof(FadedComponent),
+        typeof(FallDownComponent),
         typeof(FillPositionComponent),
         typeof(FindingMatchComponent),
         typeof(FirstPositionComponent),

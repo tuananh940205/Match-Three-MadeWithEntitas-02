@@ -32,12 +32,6 @@ public class PullBoardSystem : ReactiveSystem<GameEntity>
             int[] maxY = new int[e.boardSize.row];
             List<GameEntity> _negativeTileList = new List<GameEntity>();
 
-            // grab the max depth
-            for(int i = 0; i < maxY.Length; i++)
-            {
-                maxY[i] = 0;
-                // negativeTiles[i] = 0;
-            }
             foreach(GameEntity entity in _tileEntities)
             {
                 if(entity.arrayPosition.x >= 0 && entity.arrayPosition.y >= 0)
@@ -46,25 +40,18 @@ public class PullBoardSystem : ReactiveSystem<GameEntity>
                 }
                 else
                 {
-                    Debug.LogFormat("x = {0}, y = {1}", entity.arrayPosition.x, entity.arrayPosition.y);
+                    // Debug.LogFormat("x = {0}, y = {1}", entity.arrayPosition.x, entity.arrayPosition.y);
                     _negativeTileList.Add(entity);
                     // negativeTiles[entity.arrayPosition.x]++;
                 }
             }
-            // for(int i = 0; i < negativeTiles.Length; i++)
-            // {
-            //     if(negativeTiles[i] > 0)
-            //     {
-            //         Debug.LogFormat("i = {0}, x = {1}", i, negativeTiles[i]);
-            //     }
-            // }
-            for(int y = 0; y < _tilesArray.GetLength(1); y++)
+
+            for(int x = 0; x < _tilesArray.GetLength(0); x++)
             {
-                for(int x = 0; x < _tilesArray.GetLength(0); x++)
+                for(int y = 0; y < _tilesArray.GetLength(1); y++)
                 {
                     if(_tilesArray[x, y] == null)
                     {
-                        // Debug.LogFormat("Null {0} {1}", x, y);
                         if(maxY[x] < y)
                         {
                             maxY[x] = y;
@@ -72,49 +59,70 @@ public class PullBoardSystem : ReactiveSystem<GameEntity>
                     }
                 }
             }
-            // for(int i = 0; i < maxY.Length; i++)
-            // {
-            //     Debug.LogFormat("Index {0} y = {1}", i, maxY[i]);
-            // }
+
+            // Grab the list of tile could be pull down
             for(int i = 0; i < e.tileColumnPull.tileNumber.Length; i++)
             {
                 if(e.tileColumnPull.tileNumber[i] > 0)
                 {
-                    List<GameEntity> _pullDownList = new List<GameEntity>();
+                    List<GameEntity> _listPullDown = new List<GameEntity>();
+                    List<GameEntity> _sameNegative = new List<GameEntity>();
+                    // Debug.LogFormat("negative tile list {0}", _negativeTileList.Count);
+                    foreach(GameEntity entity in _negativeTileList)
+                    {
+                        if(entity.arrayPosition.x == i)
+                        {
+                            // Debug.LogFormat("Add up");
+                            _sameNegative.Add(entity);
+                            // entity.ReplaceTileName(entity.arrayPosition.y + "");
+                            // _negativeTileList.Remove(entity);
+                        }
+                    }
 
-                    for(int j = maxY[i] - 1; j >= 0; j--)
+                    // Add upper
+                    int count = -1;
+                    for(int j = 0; j < _sameNegative.Count; j++)
+                    {
+                        for(int k = 0; k < _sameNegative.Count; k++)
+                        {
+                            if(_sameNegative[k].arrayPosition.y == count)
+                            {
+                                // Debug.LogFormat("Add down");
+                                _listPullDown.Add(_sameNegative[k]);
+                                // _sameNegative.Remove(_sameNegative[k]);
+                                // _sameNegative[k].ReplaceTileName(_sameNegative[k].arrayPosition.y + "Up");
+                                count--;
+                                break;
+                            }
+                        }
+                        if(_sameNegative.Count == 0) break;
+                    }
+                    _listPullDown.Reverse();
+
+                    // Add down
+                    // Debug.LogFormat("maxY {0}", maxY[i]);
+                    for(int j = 0; j < maxY[i]; j++)
                     {
                         if(_tilesArray[i, j] != null)
                         {
-                            _pullDownList.Add(_tilesArray[i, j]);
+                            _listPullDown.Add(_tilesArray[i, j]);
+                            // _tilesArray[i, j].ReplaceTileName(_tilesArray[i, j].arrayPosition.y + "Down");
                         }
                     }
 
-                    // if(_negativeTileList.Count > 0)
-                    // {
-                    //     for(int j = 0; j < _negativeTileList.Count; j++)
-                    //     {
-                    //         if(_negativeTileList[j].arrayPosition.x == i)
-                    //         {
-                    //             _pullDownList.Add(_negativeTileList[j]);
-                    //             _negativeTileList.Remove(_negativeTileList[j]);
-                    //         }
-                    //     }
-                    // }
-                    // Another way to sort
-
-                    if(_negativeTileList.Count > 0)
+                    // Debug.LogFormat("listpulldown {0}", _listPullDown.Count);
+                    for(int j = 0; j < _listPullDown.Count; j++)
                     {
-                        for(int j = 0; j < _negativeTileList.Count; j++)
-                        {
-                            
-                        }
+                        // Debug.LogFormat("i {0}, e {1} {2}", j, _listPullDown[j].arrayPosition.x, _listPullDown[j].arrayPosition.y);
                     }
 
-
-                    // Debug.LogFormat("index {0} total {1}", i, _pullDownList.Count);
+                    for(int j = 0; j < _listPullDown.Count; j++)
+                    {
+                        _listPullDown[j].ReplaceFallDown(i, j);
+                    }
                 }
             }
+            e.RemoveTileColumnPull();
         }
     }
 }
